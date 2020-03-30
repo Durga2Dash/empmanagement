@@ -1,0 +1,20 @@
+version: '3'
+services:
+  datamanag:
+    container_name: datamanagement
+    build: ./
+    ports:
+    - 8888:8011
+
+  empmanag:
+    container_name: empmanagement
+    build: ./
+    ports:
+      - 8889:8012
+    links:
+      - datamanag
+
+networks:
+  network:
+    external:
+      name: mng-network
